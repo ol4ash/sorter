@@ -1,31 +1,54 @@
-class Sorter {
+class Sorter { 
   constructor() {
-    // your implementation
+    this.sorter=[];
   }
 
   add(element) {
-    // your implementation
-  }
-
+     return this.sorter.push(element)
+    }
+  
   at(index) {
-    // your implementation
+    return this.sorter[index]
   }
 
   get length() {
-    // your implementation
+    return this.sorter.length
   }
 
   toArray() {
-    // your implementation
+    return this.sorter
   }
 
   sort(indices) {
-    // your implementation
+
+    this.indices= indices;
+    this.indexed=[];
+
+    for (var i=0; i<this.indices.length; i++) {
+  this.indexed.push(this.sorter[this.indices[i]])
+  }
+
+   if (typeof(this.compareFunction)==="undefined") {this.indexed.sort(function(a,b){return a - b})}
+    
+    else {this.indexed.sort(this.compareFunction)}
+
+    this.indices.sort();
+
+
+    for (var i=0; i<this.indexed.length; i++){
+      this.sorter[this.indices[i]]=this.indexed[i]
+    }
+    return this.sorter    
+
   }
 
   setComparator(compareFunction) {
-    // your implementation
+    this.compareFunction = compareFunction;
+
+
+
   }
+    
 }
 
 module.exports = Sorter;
